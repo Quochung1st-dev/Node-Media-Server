@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phát Live Stream từ FLV</title>
+  <script src="https://cdn.jsdelivr.net/npm/flv.js@latest"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f1f1f1;
+    }
+
+    video {
+      width: 80%;
+      max-width: 800px;
+    }
+  </style>
+</head>
+<body>
+
+<video id="video" controls></video>
+
+<script>
+  if (flvjs.isSupported()) {
+    var videoElement = document.getElementById('video');
+    var flvPlayer = flvjs.createPlayer({
+      type: 'flv',
+      url: 'https://stream.vnhte.pro/live/123456.flv'
+    });
+    flvPlayer.attachMediaElement(videoElement);
+    flvPlayer.load();
+    flvPlayer.play();
+  } else {
+    console.error('FLV not supported');
+  }
+</script>
+
+</body>
+</html>
